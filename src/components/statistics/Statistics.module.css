@@ -1,0 +1,6 @@
+.statList{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
