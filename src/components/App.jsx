@@ -12,28 +12,15 @@ export const App =()=> {
   //   bad: 0,
   // }
 
-  const [good, setGoodState ] = useState(0)
-  const [neutral, setNeutralState ] = useState(0)
-  const [bad, setBadState ] = useState(0)
-  // const [type, setType ]
+  const [options, setOptions ] = useState({good:0, neutral:0, bad:0})
+  const {good, neutral, bad} = options;
+
 
   const handleClick = evt => {
-    const name = evt.target.id;
-    console.log(good.value);
-    switch(name){
-      case 'good':
-        setGoodState((prevState)=> prevState+1);
-        break;
-      case 'neutral':
-        setNeutralState((prevState)=> prevState+1)
-        break;
-      case 'bad':
-        setBadState((prevState)=> prevState+1)
-        break;
-      default:
-    }
+    const option = evt.target.id;
+
+    setOptions((prevState)=>({...prevState, [option]:prevState[option]+1}))
   }
-  
 
   const countTotalFeedback = () =>{
     const total = good+neutral+bad;
@@ -51,7 +38,7 @@ export const App =()=> {
       <Section title='Please leave a feedback'>
         
       <FeedbackOptions
-      options={[good, neutral, bad]} 
+      options={Object.keys(options)} 
       onLeaveFeedback={handleClick}>
       </FeedbackOptions>
       </Section>
