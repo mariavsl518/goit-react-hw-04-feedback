@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from "react";
+import { useState } from "react";
 import { FeedbackOptions } from "./feedback/FeedbackOptions";
 import { Statistics } from "./statistics/Statistics";
 import { Section } from "./section/Section";
@@ -15,10 +15,11 @@ export const App =()=> {
   const [good, setGoodState ] = useState(0)
   const [neutral, setNeutralState ] = useState(0)
   const [bad, setBadState ] = useState(0)
+  // const [type, setType ]
 
   const handleClick = evt => {
     const name = evt.target.id;
-    console.log(this.state);
+    console.log(good.value);
     switch(name){
       case 'good':
         setGoodState((prevState)=> prevState+1);
@@ -29,6 +30,7 @@ export const App =()=> {
       case 'bad':
         setBadState((prevState)=> prevState+1)
         break;
+      default:
     }
   }
   
@@ -57,9 +59,9 @@ export const App =()=> {
       <Section title='Statistics'>
   
       <Statistics
-      good={goodState} 
-      neutral={neutralState} 
-      bad={badState} 
+      good={good} 
+      neutral={neutral} 
+      bad={bad} 
       total={countTotalFeedback()} 
       positivePercentage={countPositiveFeedbackPercentage}>
       </Statistics>
